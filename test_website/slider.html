@@ -38,8 +38,20 @@
             <div id="block_id" style="display: none;">
                 <div id="slider"></div>
             </div>
-            <button onclick="Slider.prevSlide()">Prev</button>
-            <button onclick="Slider.nextSlide()">Next</button>
+            <button id ="autop" class ="button" type ="button">Prev</button>
+            <script>
+                autop.addEventListener("click", function ()
+                {
+                    Slider.prevSlide();
+                })
+            </script>
+            <button id ="auton" class ="button" type ="button">Next</button>
+            <script>
+                auton.addEventListener("click", function ()
+                {
+                    Slider.nextSlide();
+                })
+            </script>
             <button id ="auto" class ="button" type ="button">Start</button>
             <script>
                 auto.addEventListener("click", function (){

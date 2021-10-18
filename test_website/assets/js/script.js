@@ -20,7 +20,6 @@ const Slider = {
     buildSlider: function() {
         let sliderHTML = "";
         for(let slide of this.slides) {
-//зверніть увагу на можливість використання ``,яка дозволяє додавати в string змінні ${}
             sliderHTML +=
                 `<div id='${slide.id}' class='singleSlide'
            style='background-image:url(${slide.background});'>
@@ -37,11 +36,7 @@ const Slider = {
 
     prevSlide: function() {
         let next;
-        if (this.current === 0 ) {
-            next = this.slides.length - 1;
-        } else {
-            next = this.current - 1;
-        }
+        next = this.current === 0 ? this.slides.length - 1 : this.current - 1;
 
         document.getElementById("slide-" + next).style.left = "-100%";
         document.getElementById("slide-" + this.current).style.left = 0;
@@ -53,11 +48,7 @@ const Slider = {
     },
     nextSlide: function(){
         let next;
-        if (this.current === (this.slides.length - 1) ) {
-            next = 0;
-        } else {
-            next = this.current + 1;
-        }
+        next = this.current === (this.slides.length - 1) ? 0 : this.current + 1;
 
         document.getElementById("slide-" + next).style.left = "100%";
         document.getElementById("slide-" + this.current).style.left = 0;
@@ -67,12 +58,15 @@ const Slider = {
 
         this.current = next;
     },
+
     showHide: function(element_id){
-    if (document.getElementById(element_id)) {
-        var obj = document.getElementById(element_id);
-        if (obj.style.display != "block") {
-            obj.style.display = "block";
-        } else obj.style.display = "none";
-    } else alert("Элемент с id: " + element_id + " не найден!");
+        if (document.getElementById(element_id)) {
+            var obj = document.getElementById(element_id);
+            if (obj.style.display != "block") {
+                obj.style.display = "block";
+            } else obj.style.display = "none";
+        } else {
+            alert("Элемент с id: " + element_id + " не найден!");
+        }
     }
 }
