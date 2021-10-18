@@ -5,6 +5,7 @@ function Slide(index, title, background, link ) {
     this.id = "slide-" + index;
 }
 
+
 const Slider = {
     current: 0,
     slides: [],
@@ -19,6 +20,7 @@ const Slider = {
     buildSlider: function() {
         let sliderHTML = "";
         for(let slide of this.slides) {
+//зверніть увагу на можливість використання ``,яка дозволяє додавати в string змінні ${}
             sliderHTML +=
                 `<div id='${slide.id}' class='singleSlide'
            style='background-image:url(${slide.background});'>
@@ -30,6 +32,9 @@ const Slider = {
         document.getElementById("slider").innerHTML = sliderHTML;
         document.getElementById("slide-" + this.current).style.left = 0;
     },
+
+
+
     prevSlide: function() {
         let next;
         if (this.current === 0 ) {
@@ -37,8 +42,6 @@ const Slider = {
         } else {
             next = this.current - 1;
         }
-
-        document.addEventListener("mouseover");
 
         document.getElementById("slide-" + next).style.left = "-100%";
         document.getElementById("slide-" + this.current).style.left = 0;
@@ -56,8 +59,6 @@ const Slider = {
             next = this.current + 1;
         }
 
-        document.addEventListener("mouseover");
-
         document.getElementById("slide-" + next).style.left = "100%";
         document.getElementById("slide-" + this.current).style.left = 0;
 
@@ -65,7 +66,13 @@ const Slider = {
         document.getElementById("slide-" + this.current).setAttribute("class", "singleSlide slideOutLeft");
 
         this.current = next;
+    },
+    showHide: function(element_id){
+    if (document.getElementById(element_id)) {
+        var obj = document.getElementById(element_id);
+        if (obj.style.display != "block") {
+            obj.style.display = "block";
+        } else obj.style.display = "none";
+    } else alert("Элемент с id: " + element_id + " не найден!");
     }
-
 }
-
