@@ -4,8 +4,33 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Slider</title>
     <link rel="stylesheet" href="assets/css/layout.css">
+    <script src="assets/js/script.js"></script>
+    <script>
+        window.onload = function() {
+            let slides = [
+                {
+                    title: "Music",
+                    background: "assets/img/pico1.jpg",
+                    link: "https://www.youtube.com/watch?v=Y5H7IbDANNU"
+                }, {
+                    title: "Love",
+                    background: "assets/img/pico2.jpg",
+                    link: "https://jut.su/narutoo/season-2/"
+                }, {
+                    title: "Lections",
+                    background: "assets/img/pico3.jpg",
+                    link: "https://www.youtube.com/watch?v=P3FKHH2RzjI&list=PL4878CAF571212BB2"
+                }
+            ]
+            Slider.initSlider(slides);
+        };
+    </script>
+
 </head>
 <body>
+
+<button onClick="Slider.prevSlide()">Prev</button>
+<button onClick="Slider.nextSlide()">Next</button>
 <header class="header"><p><img width = "50px" src = "public/images/1.jpg"></p>
 </header>
 <div class="container">
@@ -34,6 +59,10 @@
         <p></p>
     </div>
     <div class="push"></div>
+    <div id="slider"></div>
+    <button onclick="Slider.prevSlide()">Prev</button>
+    <button onclick="Slider.nextSlide()">Next</button>
+
 </div>
 <div class="footer-wrapper">
     <footer class="footer"><p>Footer...</p></footer>
