@@ -28,7 +28,7 @@
 
 </head>
 <body>
-<header class="header"><p><img width = "50px" src = "public/images/1.jpg"></p>
+<header class="header"><p><img width = "50px" src = "public/images/1.jpg" alt="logo"></p>
 </header>
 <div class="container">
     <main class="center column">
@@ -43,15 +43,16 @@
             <button id ="auto" class ="button" type ="button">Start</button>
             <script>
                 auto.addEventListener("click", function (){
-                    if(document.getElementById("auto").textContent==="Start")
-                    {
-                        document.getElementById("auto").textContent="Stop";
-                        timerID = setInterval(function (){
+                    if (document.getElementById("auto").textContent ==="Start") {
+                        document.getElementById("auto").textContent ="Stop";
+                        timerID = setInterval(function () {
                             Slider.nextSlide();
                         }, 1000)
+                    }else {
+                        document.getElementById("auto").textContent ="Start";
+                        clearInterval(timerID);
                     }
                 })
-
             </script>
             <p></p>
         </article>
@@ -75,7 +76,6 @@
         <p></p>
     </div>
     <div class="push"></div>
-    <div id="slider"></div>
 
 </div>
 <div class="footer-wrapper">
