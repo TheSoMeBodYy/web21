@@ -114,4 +114,18 @@ function canvas(selector, options){
         context.fillText(time.getDay()+"."+time.getMonth()+" "+time.getMinutes()+":"+time.getHours(), 10,50);
     })
     toolBar4.insertAdjacentElement('afterbegin', timeBtn)
+
+    const toolBar5 = document.getElementById('toolbar5')
+    const backBtn = document.createElement('button')
+    backBtn.classList.add('btn')
+    backBtn.textContent = 'Costumize background'
+
+    backBtn.addEventListener('click',()=>{
+        const img = new Image;
+        img.src =`https://www.fillmurray.com/200/300)`;
+        img.onload = () => {
+            context.drawImage(img, 0, 0);
+        }
+    })
+    toolBar5.insertAdjacentElement('afterbegin', backBtn)
 }
