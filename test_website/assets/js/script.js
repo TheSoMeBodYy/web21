@@ -6,20 +6,22 @@ function Slide(index, title, background, link ) {
 }
 
 
-const Slider = {
+Slider = {
     current: 0,
     slides: [],
-    initSlider: function(slides){
+    initSlider: function (slides) {
         let index = 0;
-        for (let slide of slides){
+        for (let slide of slides) {
             this.slides.push(new Slide(index, slide.title, slide.background, slide.link));
             index++;
         }
         this.buildSlider();
     },
-    buildSlider: function() {
+
+    buildSlider: function () {
         let sliderHTML = "";
         for(let slide of this.slides) {
+
             sliderHTML +=
                 `<div id='${slide.id}' class='singleSlide'
            style='background-image:url(${slide.background});'>
@@ -32,9 +34,14 @@ const Slider = {
         document.getElementById("slide-" + this.current).style.left = 0;
     },
 
+    setSlide: function (idx){
+        let index = parseInt(idx.match(/\d+/));
+        while(this.current!==index){
+            Slider.nextSlide();
+        }
+    },
 
-
-    prevSlide: function() {
+    prevSlide: function () {
         let next;
         next = this.current === 0 ? this.slides.length - 1 : this.current - 1;
 
@@ -46,7 +53,7 @@ const Slider = {
 
         this.current = next;
     },
-    nextSlide: function(){
+    nextSlide: function () {
         let next;
         next = this.current === (this.slides.length - 1) ? 0 : this.current + 1;
 
@@ -59,14 +66,14 @@ const Slider = {
         this.current = next;
     },
 
-    showHide: function(element_id){
+    showHide: function (element_id) {
         if (document.getElementById(element_id)) {
-            var obj = document.getElementById(element_id);
-            if (obj.style.display != "block") {
+            let obj = document.getElementById(element_id);
+            if (obj.style.display !== "block") {
                 obj.style.display = "block";
             } else obj.style.display = "none";
         } else {
             alert("Элемент с id: " + element_id + " не найден!");
         }
     }
-}
+};

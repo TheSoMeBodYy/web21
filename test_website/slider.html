@@ -66,6 +66,22 @@
                     }
                 })
             </script>
+            <div>
+                <button id ="s1" class ="button" type ="button">Slide 1</button>
+                <button id ="s2" class ="button" type ="button">Slide 2</button>
+                <button id ="s3" class ="button" type ="button">Slide 3</button>
+                <script>
+                    s1.addEventListener("click", function (){
+                        Slider.setSlide("slide-0");
+                    })
+                    s2.addEventListener("click", function (){
+                        Slider.setSlide("slide-1");
+                    })
+                    s3.addEventListener("click", function (){
+                        Slider.setSlide("slide-2");
+                    })
+                </script>
+            </div>
             <p></p>
         </article>
     </main>
