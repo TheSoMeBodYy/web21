@@ -20,9 +20,7 @@
                     window.onload = function() {
                         canvas('#draw', {
                             width: 500,
-                            height: 300,
-                            strokeWidth: 5,
-                            strokeColor: "#df4b26"
+                            height: 300
                         })
                     }
                 </script>
@@ -31,7 +29,22 @@
             <div class="toolbar" id="toolbar1"></div>
             <div class="toolbar" id="toolbar2"></div>
             <div class="toolbar" id="toolbar3"></div>
-            <input type="color" id="color-picker" />
+            <div class="toolbar" id="toolbar4"></div>
+            <label>Drawing tool:
+                <input type="color" id="colorpicker">
+                <select id="select">
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                    <option value=5>5</option>
+                    <option value=6>6</option>
+                    <option value=7>7</option>
+                    <option value=8>8</option>
+                    <option value=9>9</option>
+                    <option value=10>10</option>
+                </select>
+            </label>
         </article>
     </main>
     <nav class="left column">

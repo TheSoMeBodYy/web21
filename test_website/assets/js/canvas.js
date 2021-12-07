@@ -4,7 +4,10 @@ function canvas(selector, options){
     canvas.setAttribute('width', `${options.width || 400}px`)
     canvas.setAttribute('height', `${options.height || 300}px`)
 
+    let colorInput = document.getElementById("colorpicker");
+    let sizeInput = document.getElementById("select");
     const context = canvas.getContext('2d');
+    context.font = "20px Arial";
     const rect = canvas.getBoundingClientRect();
 
     let isPaint = false
@@ -19,9 +22,9 @@ function canvas(selector, options){
     }
     const redraw = () => {
         context.clearRect(0, 0, context.canvas.width, context.canvas.height);
-        context.strokeStyle = options.strokeColor;
-        context.lineJoin = "round";
-        context.lineWidth = options.strokeWidth;
+        context.strokeStyle = colorInput.value;
+        context.lineJoin = 'round';
+        context.lineWidth = sizeInput.value;
         let prevPoint = null;
         for (let point of points){
             context.beginPath();
@@ -86,8 +89,7 @@ function canvas(selector, options){
     saveBtn.textContent = 'Save'
 
     saveBtn.addEventListener('click',()=>{
-        var img = context.getImageData(0,0,400,300);
-        localStorage.setItem('points', JSON.stringify(points));
+        localStorage.setItem("points", JSON.stringify(points));
     })
     toolBar2.insertAdjacentElement('afterbegin', saveBtn)
 
@@ -97,12 +99,19 @@ function canvas(selector, options){
     restoreBtn.textContent = 'Restore'
 
     restoreBtn.addEventListener('click',()=>{
-        const lines = localStorage.getItem(points) || null;
-        if(lines !== null)
-        {
-            var data = JSON.parse(lines);
-            context.putImageData(lines,0,0);
-        }
-        })
+        points = JSON.parse(localStorage.getItem("points"));
+        redraw();
+    })
     toolBar3.insertAdjacentElement('afterbegin', restoreBtn)
+
+    const toolBar4 = document.getElementById('toolbar4')
+    const timeBtn = document.createElement('button')
+    timeBtn.classList.add('btn')
+    timeBtn.textContent = 'Time'
+
+    timeBtn.addEventListener('click',()=>{
+        time = new Date();
+        context.fillText(time.getDay()+"."+time.getMonth()+" "+time.getMinutes()+":"+time.getHours(), 10,50);
+    })
+    toolBar4.insertAdjacentElement('afterbegin', timeBtn)
 }
